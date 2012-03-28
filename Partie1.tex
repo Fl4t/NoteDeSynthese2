@@ -1,44 +1,48 @@
 \chapter{La gestion de version} % (fold)
 \label{cha:La gestion de version}
 
+\begin{it}
+Les logiciels de gestion de versions ou VCS\, \footnote{\emph{Version
+Control System.}} sont utilisés principalement par les développeurs. En
+effet, ils sont quasi exclusivement utilisés pour gérer des codes
+sources, car ils sont capables de suivre l’évolution d’un fichier texte
+\emph{ligne de code par ligne de code.} Ces logiciels sont fortement
+conseillés pour gérer un projet informatique.
+\end{it}
+
 \section{Git : Le gestionnaire de code source} % (fold)%{{{
 \label{sec:Git : Le gestionnaire de code source}
 
-\lettrine{L}{es} logiciels de gestion de versions ou VCS\,
-\footnote{\emph{Version Control System.}} sont utilisés principalement
-par les développeurs. En effet, ils sont quasi exclusivement utilisés
-pour gérer des codes sources, car ils sont capables de suivre
-l’évolution d’un fichier texte \emph{ligne de code par ligne de code.}
-Ces logiciels sont fortement conseillés pour gérer un projet
-informatique.
-
-Ils retiennent qui a effectué chaque modification de chaque fichier et
-pourquoi. Ils sont par conséquent capables de dire qui a écrit chaque
+Ceux-ci retiennent qui a effectué chaque modification de chaque fichier
+et pourquoi. Ils sont par conséquent capables de dire qui a écrit chaque
 ligne de chaque fichier et dans quel but ; si deux personnes travaillent
 simultanément sur un même fichier, ils sont capables d’assembler (de
 fusionner) leurs modifications et d’éviter que le travail d’une de ces
-personnes ne soit écrasé.  Ces logiciels ont donc par conséquent deux
+personnes ne soit écrasé. Ces logiciels ont donc par conséquent deux
 utilités principales :
 
 \begin{itemize}
-    \item suivre l’évolution d’un code source, pour retenir les
+
+  \item suivre l’évolution d’un code source, pour retenir les
     modifications effectuées sur chaque fichier et être ainsi capable de
     revenir en arrière en cas de problème ;
 
-    \item travailler à plusieurs, sans risquer de se marcher sur les
-    pieds.  Si deux personnes modifient un même fichier en même temps, leurs
-    modifications doivent pouvoir être fusionnées sans perte d’information.
+  \item travailler à plusieurs, sans risquer de se marcher sur les
+    pieds.  Si deux personnes modifient un même fichier en même temps,
+    leurs modifications doivent pouvoir être fusionnées sans perte
+    d’information.
+
 \end{itemize}
 
 \begin{figure}
-    \begin{center}
-        \includegraphics[scale=1.3]{images/workflow.png}
-        \caption{ Chaque utilisateur possède une copie du code source
-        ainsi que toutes les versions précédentes de celui-ci, ce qui n'est pas
-        le cas de l'existant. Le serveur sert de point de rencontre entre les
-        développeurs et possède lui aussi l’historique des versions.}
-        \label{workflow}
-    \end{center}
+  \begin{center}
+    \includegraphics[scale=1.3]{images/workflow.png}
+    \caption{ Chaque utilisateur possède une copie du code source
+    ainsi que toutes les versions précédentes de celui-ci, ce qui n'est pas
+    le cas de l'existant. Le serveur sert de point de rencontre entre les
+    développeurs et possède lui aussi l’historique des versions.}
+    \label{workflow}
+  \end{center}
 \end{figure}
 
 \subsection{L'installation} % (fold)%{{{

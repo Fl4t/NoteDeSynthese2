@@ -1,0 +1,52 @@
+\chapter{Création du serveur IITAMP} % (fold)
+\label{cha:Création du serveur IITAMP}
+
+Je suis tout d'abord parti d'une base WAMPP générique. C'est un logiciel
+libre développer par une équipe de bénévoles. Ce logiciel permet de
+mettre en \oe{}uvre un serveur web sur un PC Windows. La suite WAMPP
+regroupe les logiciels Apache(Serveur HTTP), MySQL(serveur de base de
+données) et PHP(langage de programmation). De ce fait, il permet
+d'héberger sur la machine qui la compose un site internet dynamique. La
+solution de base ne nous satisfesant pas, mon travail consista a
+modifier ce gratuiciel.
+
+La première étape consista a définir une arborescence de dossiers qui
+nous permetterait une flexibilité dans plusieurs domaines :
+- la maintenance de bug
+- l'évolutivité
+- la pérénité des données
+- l'éfficacité
+- la simplicité
+
+Pour proposer une maintenance de bug éfficace est facile il a fallut
+installer le module php xdebug qui permet d'afficher des érreurs plus
+sinificative que celle de php par defaut. En effet, celui-ci permet la
+coloration synthaxique ainsi que la presentation du déroulement
+précédent le bug. J'ai aussi externaliser les fichiers de log dans un
+dossiers séparé ce qui permet d'y acceder facilement. Auquel cas on
+puisse demander au client de nous envoyer le dossier archivé par mail
+pour analyser si xdebug ne suffirait pas.
+
+comme les dossiers sont séparés méticuleusement, une mise à jour de
+l'applicatif web ou du serveur web ce fait à partir en quelques étapes
+très simple contrairement au logiciel de base qui aurait nécéssité
+beaucoup de manipulation.
+
+Les bases de données ainsi que les informations du navigateur web sont
+externalisé du dossier IITAMP ce qui permet de faire une sauvegarde
+éfficace de celles-ci. La sauvegarde ce fait à partir d'une tache
+journalière que j'ai décrite dans un document pour l'utilisateur.
+
+Pour optimiser le serveur IITAMP, une inspection profonde du logiciel
+fut nécessaire. En effet, celui-ci est composé de base d'une mutitude de
+librairies et modules qui ne sont pas forcement utile au applications
+développer par l'entreprise. De ce fait, un néttoyage fut entrepris. Un
+gain de 20 mega-octets au final.
+
+Pour rendre simple l'utilisation du serveur web pour le client, il à
+fallut créer des scipt d'automatisation de certaines taches pas
+forcement évidente pour les non initiés. Par exemple l'installation des
+applications entant que services. Le démarrage des dit services. Aussi,
+le developpement d'une page d'index dans le cas ou le client à plusieurs
+applications web de l'entreprise IdentIt.
+% chapter Création du serveur IITAMP (end)

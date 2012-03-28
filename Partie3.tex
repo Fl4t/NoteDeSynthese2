@@ -1,4 +1,143 @@
-\chapter{chapter name} % (fold)
-\label{cha:chapter name}
+\chapter{Mise en oeuvre d'IITAMP avec une solution IdentIt} % (fold)
+\label{cha:Mise en oeuvre d'IITAMP avec une solution IdentIt}
 
-% chapter chapter name (end)
+\begin{it}
+Après la creation d'IITAMP ainsi que l'élaboration de toute sa
+documentation, j'ai installé celui-ci sur un serveur local chez un
+client pour héberger la solution GeMa qui est développer par IdentIt.
+J'ai eu aussi l'opportunité de réaliser une video d'utilisation de
+l'application GeMa dans le cadre d'une présentation par les responsables
+de l'entreprise cliente à leurs salariès.
+\end{it}
+
+\section{Présentation de GeMa} % (fold)%{{{
+\label{sec:Présentation de GeMa}
+
+GeMa est une solution de maintenance inovante alliant RFID, mobilité et
+technologie WEB. L'application embarquée sur PDA permet la consultation
+des interventions à réaliser, la saisie des rapports de celle-ci et
+l'accès aux données techniques nécessaires au bon déroulement des
+travaux.
+
+'Avec GeMa, le responsable de maintenance prépare depuis son poste
+informatique les ordres de travaux pour lesquels il mandate un
+intervenant sur site. Les techniciens, quant à eux, reçoivent en temps
+réel leurs missions sur PDA durcis qu'ils complètent grâce à une
+interface ergonomique (menus déroulants, cases à cocher...). Les
+rapports ainsi réalisés remontent instantanément sur le serveur' GeMa
+exploite pleinement les nouvelles technologies. Une intervention à
+réaliser sur un équipement : le technicien l'identifie grâce à son
+étiquette RFID scannée par le PDA. Une anomalie découverte lors d'un
+contrôle : le technicien la photographie grâce à l'appareil numérique
+intégré. Un élément laissé sur place : le technicien indique sa position
+sur site, grâce aux fonctions GPS de GeMa. En temps réel, les
+responsables et/ou clients disposent d'informations fiables et
+exploitables au travers d'historiques, de statistiques, de bilans,
+d'alertes email ou via des échanges avec un logiciel tiers (ERP,
+GMAO...).
+% section Présentation de GeMa (end)%}}}
+
+\section{Presentation du client Syngenta} % (fold)%{{{
+\label{sec:Presentation du client Syngenta}
+
+Le groupe Syngenta est un des leaders mondiaux de l’agrofourniture.
+Syngenta développe une approche par culture reposant sur 2 piliers,
+d'une part la création, le développement et la commercialisation de
+variétés pour les productions agricoles majeures, d'autre part la
+protection des plantes.
+
+\begin{description}
+
+  \item[production de variétés pour l'agriculture :] betterave à sucre,
+    céréales à paille (blé tendre, blé dur, orge de printemps, orge
+    hybride), fleurs, légumes (pour le marché du frais et de
+    l’industrie), maïs, oléagineux (tournesol et colza) et les cultures
+    légumières.
+
+  \item[La protection des plantes :] Une combinaison de solutions
+    phytopharmaceutiques contre les principaux ravageurs et nuisibles
+    des cultures à base de produits de protection des semences,
+    d’herbicides, de fongicides et d’insecticides mais aussi d’insectes
+    auxiliaires.
+
+\end{description}
+% section Presentation du client Syngenta (end)%}}}
+
+\section{Mise en place de la solution} % (fold)%{{{
+\label{sec:Mise en place de la solution}
+
+Les lignes de production des variétés de plantes ce trouve a deux
+endroits differents en France, la mise en oeuvre d'IITAMP ainsi que de
+GeMa s'éffectue dans l'usine de Nerac près de bordeaux. Pour éviter de
+me déplacer de Dunkerque jusqu'au site, ce qui représente a peu pres 600
+kilometres, un acces VPN à été ouvert pour me permettre d'installer à
+distance le serveur IITAMP ainsi que l'application. Un dispositif de
+sécurité impressionnant à été mis en place par le groupe Syngenta pour
+communiquer entre les réseaux locaux des différents sites.
+
+explication de la sécurité
+
+\subsection{Harmonisation avec le Système d'information existant} % (fold)%{{{
+\label{sub:Harmonisation avec le Système d'information existant}
+
+Dans le cadre de cette mise en oeuvre, le client veut récuperer les
+données des interventions qui sont stockés dans la base mysql de GeMa
+dans leur systeme d'information qui possede une base de donnée SQL
+server. Cette duplication de donnée permet une intégration des
+informations récoltés par GeMa dans le SI de l'entreprise a des fins de
+traçabilité, ce qui permet à partir d'autre logiciel du client de faire
+des statistiques de production. Pour cette duplication, il à fallu que
+je développe un script PHP qui tout dabord intéroge la base de donnée de
+GeMa pour récuperer les données, qui ensuite traite ses données pour les
+rendres compatibles à la structure de la base du client ainsi qu'a la
+téchnologie SQL server utilisée et qui enfin insert ses données traités
+dans la base du client.
+
+\subsection{Les tests} % (fold)%{{{
+\label{sub:Les tests}
+
+Comme nous l'avons vu, GeMa utilise la mobilité pour le rapport des
+interventions. Pour tester si l'application GeMa fonctionne correctement
+ainsi que le script de duplication de donnée, quelques tests furent
+necessaire. Étant donnée que le site de production n'est pas proche,
+l'utilisation d'un émulateur de PDA au travers du reseau VPN fu
+necessaire.
+
+Quelques problèmes sont apparu pendant la phase de debogage :
+\begin{itemize}
+
+  \item Impossibilité d'utiliser le driver standard de communication
+    entre mysql et SQLServer : XAMPP par defaut ne permet pas d'utiliser
+    une base SQL Server, il à fallut que j'installe et configure le
+    driver officiel de l'entreprise microsoft pour permettre l'accès à
+    la base de donnée.
+
+  \item Synthaxe invalide pour SQL serveur : une habitude est ancrée
+    dans l'utilisation du logiciel libre mysql qui est de forcer
+    l'encodage des caractères en utf-8 afin d'éviter de futur problèmes.
+    Cependant SQL server ne connait pas cette syntaxe. GeMa étant pourvu
+    d'un système d'alerte par mail, M.~Dubourg recevait un courriel à 5
+    minutes d'intervales lorsque l'émulateur PDA était lancé,
+    (represente la synchronisation automatique de GeMa PDA sur son
+    socle) sont client mail à bien entendu déplacer l'éxpediteur entant
+    que spam au bout de plusieurs reprises. Ne fermant pas l'émulateur
+    la nuit pour éviter d'avoir à le relancer, une quantité
+    impressionnante de mail m'a été annoncé quelques jours plus tard
+    lorsque le co-gérant à inspecté sa boite à pourriels.
+
+  \item Empecher les valeurs null pour les statistiques : l'ancien
+    système de relevés ce faisant à l'aide d'un papier/crayon puis par
+    l'ajout de ses annotations dans un fichier excel, lorsqu'un champ
+    n'avait aucune valeur, un zéro lui était attribué. En inspectant les
+    données de la base SQL Server, je me suis rendu compte que mon
+    script quant à lui n'insérai rien lorsqu'il n'y avait pas de valeur.
+    J'en ai déduit qu'aucune régle de gestion n'avait été crée afin
+    d'empecher la non-saisi. J'ai donc du inscrire cette regle via le
+    code (c'est la base du client, je n'ai pas a intervenir dessus même
+    si elle est mal conçu) alors que la bonne methode est habituellement
+    de le faire via une option lors de la création de la base.
+\end{itemize}
+% subsection Les tests (end)%}}}
+% subsection Harmonisation avec le Système d'information existant (end)%}}}
+% section Mise en place de la solution (end)%}}}
+% chapter Mise en oeuvre d'IITAMP avec une solution IdentIt (end)

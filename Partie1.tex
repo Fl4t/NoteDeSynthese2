@@ -177,18 +177,6 @@ Pro\, \footnote{Mac OS X est un système de type UNIX.} ; lancer une
 machine virtuelle Windows~\textregistered\, \footnote{À partir du
 logiciel VirtualBox.} ; pour créer mon script qui s'exécute en console ;
 et qui lance enfin un terminal Linux pour faire la mise à jour\dots\\
-
-\begin{lstlisting}[basicstyle=\ttfamily\small, frame=trBL]
-"C:\Program Files\TortoiseGit\bin\pageant.exe"
-C:%HOMEPATH%\.ssh\id_rsa.ppk
-"C:\Program Files (x86)\git\bin\sh.exe" --login -i -c
-"for i in $(find . -maxdepth 2 -mindepth 2 -type d);
-do cd $i;
-   echo $i;
-   git remote -v;
-   git pull; cd ../..;
-done"
-\end{lstlisting}
 % subsection Mise à jour locale automatique (end)%}}}
 % section Les utilitaires (end)%}}}
 % chapter La gestion de version (end)

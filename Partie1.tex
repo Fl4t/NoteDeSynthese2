@@ -13,14 +13,14 @@ conseillés pour gérer un projet informatique.
 \section{Git : Le gestionnaire de code source} % (fold)%{{{
 \label{sec:Git : Le gestionnaire de code source}
 
-Ceux-ci retiennent qui a effectué chaque modification de chaque fichier
-et pourquoi. Ils sont par conséquent capables de dire qui a écrit chaque
-ligne de chaque fichier et dans quel but ; si deux personnes travaillent
-simultanément sur un même fichier, ils sont capables d’assembler (de
-fusionner) leurs modifications et d’éviter que le travail d’une de ces
-personnes ne soit écrasé. Ces logiciels ont donc par conséquent deux
-utilités principales :
+\lettrine{L}{es} gestionnaires de versions retiennent qui a effectué
+chaque modification de chaque fichier et pourquoi. Ils sont par
+conséquent capables de dire qui a écrit chaque ligne de chaque fichier
+et dans quel but ; si deux personnes travaillent simultanément sur un
+même fichier, ils sont capables de fusionner leurs modifications et
+d’éviter que le travail d’une de ces personnes ne soit écrasé.\\
 
+Ces logiciels ont donc par conséquent deux utilités principales :
 \begin{itemize}
 
   \item suivre l’évolution d’un code source, pour retenir les
@@ -50,13 +50,10 @@ utilités principales :
 
 À peu près au milieu du stage, nous nous sommes heurtés à un problème
 technique. Le serveur de l'entreprise ne contenait pas de version
-récente de Git. En sachant que celui-ci est mutualisé\,
-\footnote{L'hébergement mutualisé est un concept d'hébergement internet
-destiné principalement à des sites web, dans un environnement technique
-dont la caractéristique principale est d'être partagé par plusieurs
-utilisateurs. L'administration du ou des serveurs est assurée par un
-intervenant tiers tel qu'OVH.}, nous n'avions pas les autorisations
-nécessaires pour installer une nouvelle version.
+récente de Git. En sachant que celui-ci est mutualisé\, \footnote{C'est
+un concept d'hébergement dont la caractéristique principale est d'être
+partagé par plusieurs utilisateurs.}, nous n'avions pas les
+autorisations nécessaires pour installer une nouvelle version.
 
 Les logiciels libres sont réputés pour être rétro-compatibles, mais en
 toute logique ils ne disposent pas des nouveautés sans les mettre à jour.
@@ -99,7 +96,6 @@ du guide sous forme de questions et de réponses.
   \item Comment utiliser les branches ?
   \item Comment consulter l'historique des modifications ?
   \item Quelle est la méthode de travail ?
-  \item Annexe
 \end{enumerate}
 % section Le tutoriel utilisateur (end)%}}}
 
@@ -122,22 +118,20 @@ pour simplifier les choses répétitives.
 \subsection{Lister les dépôts du serveur} % (fold)%{{{
 \label{sub:Lister les dépôts du serveur}
 
-Mon travail suivant consista à lister les dépôts Git dans une page
-PHP\, \footnote{\emph{Hypertext Preprocessor} est un langage de scripts
-libre principalement utilisé pour produire des pages Web dynamiques.}.
+Mon travail suivant consista à lister les dépôts Git sur une page Web.
 Le serveur OVH centralise les codes sources de la société, les
 développeurs, eux doivent récupérer une copie des dossiers pour pouvoir
 travailler dessus. Seulement, lancer FilleZilla\, \footnote{FileZilla
 est un logiciel gratuit qui permet de se connecter à distance sur un
-serveur pour y télécharger des fichiers.} pour connaître les noms des
-répertoires Git puis recopier le bon lien hypertexte avec le bon chemin
-d'arborescence est une tâche fastidieuse.  J'ai donc, à l'aide de mes
-connaissances en système UNIX, créé un script qui analyse un dossier
-défini et qui liste les différents dépôts tout en leur mettant les
-bonnes adresses de téléchargement en préfixe comme nous le montre la
-figure~\ref{repo}. Du coup, un simple copier-coller du lien du dépôt
-voulu dans tortoiseGit suffit pour cloner, gain de productivité et de
-simplicité réunies.
+serveur pour y télécharger des fichiers via le Protocole FTP.} pour
+connaître les noms des répertoires Git puis recopier le bon lien
+hypertexte avec le bon chemin d'arborescence est une tâche fastidieuse.
+J'ai donc, à l'aide de mes connaissances en système UNIX, créé un script
+qui analyse un dossier défini et qui liste les différents dépôts tout en
+leur mettant les bonnes adresses de téléchargement en préfixe comme nous
+le montre la figure~\ref{repo}. Du coup, un simple copier-coller du lien
+du dépôt voulu dans tortoiseGit suffit pour cloner, gain de productivité
+et de simplicité réunies.
 
 \begin{figure}
     \begin{center}
@@ -155,7 +149,7 @@ Une fois que les développeurs sont satisfaits de leurs modifications,
 ils doivent mettre à jour le dépôt distant pour partager leurs travaux.
 Une fois les modifications validées par le chef de projet, celui-ci doit
 mettre en ligne sur le dépôt de production. J'ai créé un script Batch
-\og modèle \fg{} pour que cela se fasse en un clic.\\
+\og modèle \fg{} pour que cela se fasse en un clic.
 % section Mise en production automatique (end)%}}}
 
 \subsection{Mise à jour locale automatique} % (fold)%{{{
@@ -163,20 +157,20 @@ mettre en ligne sur le dépôt de production. J'ai créé un script Batch
 
 Les développeurs possèdent des clones des dépôts distants\,
 \footnote{Ils se trouvent tous sur le serveur OVH qui sert de point de
-rencontre comme nous l'avons vu.} en local pour bien évidemment
-maintenir le code source. Le fait qu'il y ait une multitude de dépôts
-implique une mise à jour des clones locaux pour récupérer les
-modifications des autres développeurs ce qui est très répétitif. J'ai
-donc créé un script Batch\, \footnote{Désigne un fichier qui contient
-une suite de commandes qui seront traitées automatiquement par
-Windows~\textregistered.} qui explore tous les dossiers englobant les
-sources des dépôts et les met à jour. Pour cela j'ai parcouru la
+rencontre entre les développeurs comme nous avons pu le voir.} en local
+pour bien évidemment maintenir le code source. Le fait qu'il y ait une
+multitude de dépôts implique une mise à jour des clones locaux pour
+récupérer les modifications des autres développeurs ce qui est très
+répétitif. J'ai donc créé un script Batch\, \footnote{Désigne un fichier
+qui contient une suite de commandes qui seront traitées automatiquement
+par Windows~\textregistered.} qui explore tous les dossiers englobant
+les sources des dépôts et les met à jour. Pour cela j'ai parcouru la
 documentation de la console Windows~\textregistered{} et ça n'a pas été
 évident du tout. Pour l'anecdote, je devais à partir de mon MacBook
 Pro\, \footnote{Mac OS X est un système de type UNIX.} ; lancer une
 machine virtuelle Windows~\textregistered\, \footnote{À partir du
 logiciel VirtualBox.} ; pour créer mon script qui s'exécute en console ;
-et qui lance enfin un terminal Linux pour faire la mise à jour\dots\\
+et qui lance enfin un terminal Linux pour faire la mise à jour\dots
 % subsection Mise à jour locale automatique (end)%}}}
 % section Les utilitaires (end)%}}}
-% chapter La gestion de version (end)
+% chapter La gestion de version (end)%}}}

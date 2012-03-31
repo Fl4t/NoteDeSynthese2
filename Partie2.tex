@@ -1,33 +1,37 @@
-\chapter{Création d'un IITAMP} % (fold)
-\label{cha:Création d'un IITAMP}
+\chapter{Création d'IITAMP} % (fold)
+\label{cha:Création d'IITAMP}
 
 \begin{it}
   La majeur partie des entreprises utilisant l'informatique
-  dispose d'un réseau local. Le but de IITAMP est de fournir les outils
-  capable de faire fonctionner une application web provenant de IdentIt
-  sur un poste informatique d'une entreprise de façon simple et
-  efficace, ce qui permet de ce passer d'un hébergeur sur internet.
+  dispose d'un réseau local. Le but de IITAMP\, \footnote{\emph{IdentIt
+  Apache MySQL PHP.}} est de fournir les outils capables de faire
+  fonctionner une application Web développé par \emph{IdentIt} sur un
+  poste informatique d'une entreprise de façon simple et efficace, ce
+  qui permet de ce passer d'un hébergeur sur internet et d'autres
+  avantages.
 \end{it}
 
 \section{Les avantages d'un intranet} % (fold)%{{{
 \label{sec:Les avantages d'un intranet}
 
-Certaines entreprises dans un but de confidentialité préfèrent
-utiliser des applications en intranet. Dans mon cas, un serveur sous
-Windows Server 2008 utilise IITAMP ainsi qu'une application IdentIt pour
-qu'a partir du réseau local tout les ordinateurs puissent utiliser
-l'application.
+\lettrine{C}{ertaines} entreprises dans un but de confidentialité
+préfèrent utiliser des applications en intranet. Dans mon cas, un
+serveur sous Windows~\textregistered{} Server 2008 utilise IITAMP ainsi
+qu'une application \emph{IdentIt} pour qu'a partir du réseau local tout
+les ordinateurs puissent utiliser l'application. De ce fait, le produit
+n'est pas accessible via l'Internet.
 
 La confidentialité n'est pas le seul atout. En effet, passer par un
 réseau d'entreprise en terme de performance est avantageux car les
-requêtes entre le client et le serveur ce font intra-muros, tandis que
-passer par un hébergeur qui peut ce trouver à des milliers de kilomètres
-affecte les délais. Passer par une solution d'hébergement sur le réseau
-des réseaux à un coût alors qu'une solution locale n'est pas
+requêtes entre le client et le serveur ce font \emph{intra-muros} tandis
+que passer par un hébergeur qui peut ce trouver à des milliers de
+kilomètres affecte les délais. Utiliser une solution d'hébergement sur
+le réseau des réseaux à un coût alors qu'une solution locale n'est pas
 forfaitaire.
 
-Si la connexion à internet défailli, le service est interrompu au
-contraire de cette solution locale.
+Dans le cas d'un hébergement, si la connexion à internet vient à être
+interrompu, le service n'est plus disponible. Par contre avec notre
+solution ça continue à fonctionner.
 % section Les avantages d'un intranet (end)%}}}
 
 \section{La base applicative} % (fold)%{{{
@@ -35,13 +39,15 @@ contraire de cette solution locale.
 
 Je suis tout d'abord parti d'une base XAMPP générique. C'est un logiciel
 libre développer par une équipe de bénévoles. Cette ensemble de
-programmes permettent de mettre en oeuvre un serveur web sur un PC
+programmes permettent de mettre en \oe{}uvre un serveur web sur un PC
 Windows à des fins de développement. La suite XAMPP regroupe les
-logiciels Apache(Serveur HTTP), MySQL(serveur de base de données) et
-PHP(langage de programmation). De ce fait, il permet d'héberger sur la
-machine qui la compose un site internet dynamique. La solution de base
-ne nous satisfaisant pas, mon travail consista a modifier ce gratuiciel
-pour les besoins de déploiement des produits IdentIt.
+logiciels Apache\, \footnote{Serveur HTTP}, MySQL\, \footnote{Serveur de
+base de données.} et PHP\, \footnote{\emph{PHP: Hypertext Preprocessor}
+acronyme récursif désignant un langage de script.}. De ce fait, il
+permet d'héberger sur la machine qui la compose un site internet
+dynamique. La solution de base ne nous satisfaisant pas, mon travail
+consista à modifier ce gratuiciel pour les besoins de déploiement des
+produits \emph{IdentIt}.
 % section La base applicative (end)%}}}
 
 \section{Les objectifs} % (fold)%{{{
@@ -51,34 +57,36 @@ pour les besoins de déploiement des produits IdentIt.
 \label{sub:La maintenabilité}
 
 Pour proposer une maintenance de bug efficace est facile il a fallut
-installer le module php xdebug qui permet d'afficher des erreurs plus
-significative que celle de php par defaut. En effet, celui-ci permet la
-coloration syntaxique ainsi que la présentation du déroulement
-précédent le bug. J'ai aussi externalisé les fichiers de log dans un
+installer le module PHP \emph{Xdebug} qui permet d'afficher des erreurs
+plus significatives que celles de PHP par défaut. En effet, celui-ci
+permet la coloration syntaxique ainsi que les valeurs des variables qui
+précède le bug. J'ai aussi externalisé les fichiers d'historique dans un
 dossiers séparé ce qui permet d'y accéder facilement. Auquel cas on
-puisse demander au client de nous envoyer le dossier archivé par mail
-pour analyser si xdebug ne suffisait pas pour d'écrire l'erreur
-rencontré par téléphone.
+puisse demander au client de nous envoyer le dossier archivé par
+courrier électronique pour analyser si Xdebug ne suffisait pas pour
+d'écrire l'erreur rencontré par téléphone.
 % subsection La maintenabilité (end)%}}}
 
 \subsection{L'évolutivité} % (fold)%{{{
 \label{sub:L'évolutivité}
-Comme les dossiers sont séparés méticuleusement, une
-mise à jour de l'applicatif web ou du serveur IITAMP ce fait à partir en
-quelques étapes très simple contrairement au logiciel de base qui aurait
-nécessité beaucoup de manipulation, la plus pars étant demander au client
-lorsque les applications seront mis en production.
+
+Comme les dossiers sont séparés méticuleusement, une mise à jour de
+l'applicatif web ou du serveur IITAMP ce fait à partir en quelques
+étapes très simple contrairement au logiciel de base qui aurait
+nécessité beaucoup de manipulation, la plus pars de ses interventions
+étant demander au client lorsque les applications seront misent en
+production.
 % subsection L'évolutivité (end)%}}}
 
-\subsection{La pérénité des données} % (fold)%{{{
-\label{sub:La pérénité des données}
+\subsection{La pérennité des données} % (fold)
+\label{sub:La pérennité des données}
 
-La pérennité Les bases de données ainsi que les informations du
-navigateur web sont extraite du dossier IITAMP ce qui permet de
-faire une sauvegarde efficace de celles-ci. La sauvegarde ce fait à
-partir d'une tache journalière que j'ai décrite dans un document pour
+La informations des bases de données ainsi que les informations du
+navigateur Web sont extraite du dossier IITAMP ce qui permet de faire
+une sauvegarde efficace de celles-ci. La sauvegarde ce fait à partir
+d'une tache journalière que j'ai décrite dans un document pour
 l'utilisateur.
-% subsection La pérénité des données (end)%}}}
+% subsection La pérennité des données (end)
 
 \subsection{L'éfficacité} % (fold)%{{{
 \label{sub:L'éfficacité}
@@ -86,7 +94,7 @@ l'utilisateur.
 Pour optimiser le serveur IITAMP, une inspection profonde du logiciel
 fut nécessaire. En effet, celui-ci est composé de base d'une multitude de
 librairies et modules qui ne sont pas forcement utile au applications
-développé par IdentIt. De ce fait, un nettoyage fut entrepris. Un
+développé par \emph{IdentIt}. De ce fait, un nettoyage fut entrepris. Un
 gain de 20 mega-octets à été constaté.
 % subsection L'éfficacité (end)%}}}
 
@@ -94,11 +102,11 @@ gain de 20 mega-octets à été constaté.
 \label{sub:La simplicité}
 
 Pour rendre simple l'utilisation du serveur web pour le client, il à
-fallut créer des scipts d'automatisations pour certaines taches pas
+fallut créer des scripts d'automatisations pour certaines taches pas
 forcements évidentes pour les non initiés. Par exemple l'installation des
 applications entant que services ainsi que le démarrage des dit services.
 J'ai aussi développer une page d'index dans le cas ou le client à
-plusieurs applications web de l'entreprise IdentIt, auquel cas une
+plusieurs applications web de l'entreprise \emph{IdentIt}, auquel cas une
 sélection de l'application est a faire.
 % subsection La simplicité (end)%}}}
 
@@ -116,28 +124,32 @@ des applications après la finalisation du serveur IITAMP.
 \label{sec:Les documentations}
 
 \begin{description}
-  \item[Création d'un IITAMP :] Permet de recréer un serveur IITAMP à partir
-  d'un serveur XAMPP qui incorpore des nouveautés ou des mises à jours.
 
-  \item[Mise en oeuvre d'un IITAMP :] mise en place de l'IITAMP nouvellement
-  crée en entreprise ou mise à jour de celui-ci.
+  \item[Création d'un IITAMP :] Permet de recréer un serveur IITAMP à
+    partir d'un serveur XAMPP qui incorpore des nouveautés ou des mises
+    à jours.
 
-  \item[Construction d'une application WEB :] Permet de guider la préparation d'une
-  application web d'IdentIt pour quel soit parfaitement intégré a IITAMP.
+  \item[Mise en \oe{}uvre d'un IITAMP :] mise en place de l'IITAMP
+    nouvellement installé en entreprise ou mise à jour de celui-ci.
 
-  \item[Déploiement d'une application WEB :] Comment mettre en place ou mettre
-  à jour une application web dans un IITAMP déjà en service.
+  \item[Construction d'une application Web :] Permet de guider la
+    préparation d'une application Web d'\emph{IdentIt} pour quel soit
+    parfaitement intégré à IITAMP.
 
-  \item[Maintenance de bases de données :] Comment mettre en place une sauvegarde
-  automatique des bases de données des applications ainsi que la
-  restauration de ses dernières.
+  \item[Déploiement d'une application Web :] Comment mettre en place ou
+    mettre à jour une application web dans un IITAMP déjà en service.
 
-  \item[Démarche d'activation d'une application GeMa :] Documentation pour
-  IdentIt compréhensible par les non techniciens qui explique comment
-  activer une application chez un client.
+  \item[Maintenance de bases de données :] Explication de la mise en
+    place d'une sauvegarde automatique des bases de données des
+    applications ainsi que la restauration de ses sauvegardes.
 
-  \item[Mise en place de GeMa en entreprise :] Documentation pour les clients qui
-  décrit les premières étapes à suivre pour utiliser GeMa.
+  \item[Démarche d'activation d'une application GeMa :] Documentation
+    pour \emph{IdentIt} compréhensible par les non techniciens qui
+    explique comment activer une application chez un client.
+
+  \item[Mise en place de GeMa en entreprise :] Documentation pour les
+    clients qui décrit les premières étapes à suivre pour utiliser GeMa.
+
 \end{description}
 % section Les documentations (end)%}}}
-% chapter Création d'un IITAMP (end)
+% chapter Création d'IITAMP (end)

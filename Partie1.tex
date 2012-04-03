@@ -18,7 +18,9 @@ chaque modification de chaque fichier et pourquoi. Ils sont par
 conséquent capables de dire qui a écrit chaque ligne de chaque fichier
 et dans quel but ; si deux personnes travaillent simultanément sur un
 même fichier, ils sont capables de fusionner leurs modifications et
-d’éviter que le travail d’une de ces personnes ne soit écrasé.\\
+d’éviter que le travail d’une de ces personnes ne soit écrasé. La
+figure~\ref{flow} qui ce trouve en page \pageref{flow} illustre
+basiquement l'utilisation de Git.
 
 Ces logiciels ont donc par conséquent deux utilités principales :
 \begin{itemize}
@@ -36,12 +38,12 @@ Ces logiciels ont donc par conséquent deux utilités principales :
 
 \begin{figure}
   \begin{center}
-    \includegraphics[scale=1.3]{images/workflow.png}
+    \includegraphics[scale=0.7]{images/workflow.png}
     \caption{ Chaque utilisateur possède une copie du code source
     ainsi que toutes les versions précédentes de celui-ci, ce qui n'est pas
     le cas de l'existant. Le serveur sert de point de rencontre entre les
     développeurs et possède lui aussi l’historique des versions.}
-    \label{workflow}
+    \label{flow}
   \end{center}
 \end{figure}
 
@@ -50,10 +52,11 @@ Ces logiciels ont donc par conséquent deux utilités principales :
 
 À peu près au milieu du stage, nous nous sommes heurtés à un problème
 technique. Le serveur de l'entreprise ne contenait pas de version
-récente de Git. En sachant que celui-ci est mutualisé\, \footnote{C'est
-un concept d'hébergement dont la caractéristique principale est d'être
-partagé par plusieurs utilisateurs.}, nous n'avions pas les
-autorisations nécessaires pour installer une nouvelle version.
+récente de Git. En sachant que celui-ci est de type mutualisé\,
+\footnote{C'est un concept d'hébergement dont la caractéristique
+principale est d'être partagé par plusieurs utilisateurs.}, nous
+n'avions pas les autorisations nécessaires pour installer une nouvelle
+version.
 
 Les logiciels libres sont réputés pour être rétro-compatibles, mais en
 toute logique ils ne disposent pas des nouveautés sans les mettre à jour.
@@ -140,6 +143,8 @@ et de simplicité réunies.
         \label{repo}
     \end{center}
 \end{figure}
+
+\newpage
 % subsection Lister les dépôts du serveur (end)%}}}
 
 \subsection{Mise en production automatique} % (fold)%{{{
@@ -157,10 +162,8 @@ que cela se fasse en un clic.
 \subsection{Mise à jour locale automatique} % (fold)%{{{
 \label{sub:Mise à jour locale automatique}
 
-Les développeurs possèdent des clones des dépôts distants\,
-\footnote{Ils se trouvent tous sur le serveur OVH qui sert de point de
-rencontre entre les développeurs comme nous avons pu le voir.} en local
-pour bien évidemment maintenir le code source. Le fait qu'il y ait une
+Les développeurs possèdent des clones des dépôts distants en local pour
+bien évidemment maintenir le code source. Le fait qu'il y ait une
 multitude de dépôts implique une mise à jour des clones locaux pour
 récupérer les modifications des autres développeurs ce qui est très
 répétitif. J'ai donc créé un script Batch qui explore tous les dossiers

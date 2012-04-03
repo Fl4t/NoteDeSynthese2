@@ -148,8 +148,10 @@ et de simplicité réunies.
 Une fois que les développeurs sont satisfaits de leurs modifications,
 ils doivent mettre à jour le dépôt distant pour partager leurs travaux.
 Une fois les modifications validées par le chef de projet, celui-ci doit
-mettre en ligne sur le dépôt de production. J'ai créé un script Batch
-\og modèle \fg{} pour que cela se fasse en un clic.
+mettre en ligne sur le dépôt de production. J'ai créé un script Batch\,
+\footnote{Désigne un fichier qui contient une suite de commandes qui
+seront traitées automatiquement par Windows.} \og modèle \fg{} pour
+que cela se fasse en un clic.
 % section Mise en production automatique (end)%}}}
 
 \subsection{Mise à jour locale automatique} % (fold)%{{{
@@ -161,16 +163,13 @@ rencontre entre les développeurs comme nous avons pu le voir.} en local
 pour bien évidemment maintenir le code source. Le fait qu'il y ait une
 multitude de dépôts implique une mise à jour des clones locaux pour
 récupérer les modifications des autres développeurs ce qui est très
-répétitif. J'ai donc créé un script Batch\, \footnote{Désigne un fichier
-qui contient une suite de commandes qui seront traitées automatiquement
-par Windows.} qui explore tous les dossiers englobant
-les sources des dépôts et les met à jour. Pour cela j'ai parcouru la
-documentation de la console Windows et ça n'a pas été
+répétitif. J'ai donc créé un script Batch qui explore tous les dossiers
+englobant les sources des dépôts et les met à jour. Pour cela j'ai
+parcouru la documentation de la console Windows et ça n'a pas été
 évident du tout. Pour l'anecdote, je devais à partir de mon MacBook
 Pro\, \footnote{Mac OS X est un système de type UNIX.} ; lancer une
-machine virtuelle Windows\, \footnote{À partir du
-logiciel VirtualBox.} ; pour créer mon script qui s'exécute en console ;
-et qui lance enfin un terminal Linux pour faire la mise à jour\dots
-% subsection Mise à jour locale automatique (end)%}}}
-% section Les utilitaires (end)%}}}
-% chapter La gestion de version (end)%}}}
+machine virtuelle Windows\, \footnote{À partir du logiciel VirtualBox.}
+; pour créer mon script qui s'exécute en console ; et qui lance enfin un
+terminal Linux pour faire la mise à jour\dots
+% subsection Mise à jour locale automatique (end)%}}} section Les
+% utilitaires (end)%}}} chapter La gestion de version (end)%}}}

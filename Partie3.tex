@@ -42,7 +42,7 @@ logiciel tiers.
 \begin{figure}
   \begin{center}
     \includegraphics{images/gema.png}
-    \caption{Schéma simpliste d'utilisation de GeMa.}
+    \caption{Schéma d'utilisation de GeMa via l'Internet.}
     \label{workflow}
   \end{center}
 \end{figure}
@@ -142,19 +142,23 @@ Quelques problèmes sont apparu pendant la phase de debogage :
   \item[Synthaxe invalide pour SQL Server :] Une habitude est ancrée
     dans l'utilisation du logiciel libre MySQL qui est de forcer
     l'encodage des caractères en UTF-8 afin d'éviter de futur problèmes.
-    Cependant SQL Server ne connait pas la syntaxe SQL permettant cela.
-    GeMa étant pourvu d'un système d'alerte par mail, M.~Dubourg
-    recevait un courriel à 5 minutes d'intervalles lorsque l'émulateur
-    d'assistant personnel lançait la synchronisation distante avec le
-    serveur,\footnote{fonction de synchronisation automatique de GeMa
-    Mobile lorsque il est sur son socle}, sont client mail à bien
-    entendu déplacer l'expéditeur entant que spam au bout de plusieurs
-    reprises. Ne fermant pas l'émulateur la nuit pour éviter d'avoir à
-    le relancer, une quantité impressionnante de mail m'a été annoncé
+    Cette manipulation ce fait via une requête SQL que l'on place dans
+    le constructeur de la classe qui sert à instancier l'objet de
+    connexion à la base de données. Comme les habitudes ont la vie dure,
+    j'ai copié/collé un constructeur sans y prêter attention, cependant
+    SQL Server ne connait pas cette syntaxe SQL. GeMa étant pourvu d'un
+    système d'alerte par mail, M.~Dubourg recevait un courriel à 5
+    minutes d'intervalles lorsque l'émulateur d'assistant personnel
+    lançait la synchronisation distante avec le serveur\,
+    \footnote{fonction de synchronisation automatique de GeMa Mobile
+    lorsque il est sur son socle.}, sont client mail à bien entendu
+    déplacer l'expéditeur entant que spam au bout de plusieurs reprises.
+    Ne fermant pas l'émulateur la nuit pour éviter d'avoir à le
+    relancer, une quantité impressionnante de mail m'a été annoncé
     quelques jours plus tard lorsque le cogérant à inspecté sa boite à
     pourriels.
 
-  \item[Obligation de renseigner tout les champs :] L'ancien système de
+  \item[Obligation de renseigner tous les champs :] L'ancien système de
     relevés ce faisant à l'aide d'un papier/crayon puis par l'ajout de
     ses annotations dans un fichier Excel, lorsqu'un champ n'avait
     aucune valeur, un zéro lui était attribué. En inspectant les données
@@ -162,7 +166,7 @@ Quelques problèmes sont apparu pendant la phase de debogage :
     à lui n'insérait rien lorsqu'il n'y avait pas de valeur. J'en ai
     déduit qu'aucune règle de gestion n'avait été crée afin d'empêcher
     la non-saisi. J'ai donc été obligé d'inscrire cette règle via le
-    code,\footnote{c'est la base du client, je n'ai pas à intervenir
+    code\,\footnote{c'est la base du client, je n'ai pas à intervenir
     dessus même si elle me parait mal conçu.} alors que la bonne méthode
     est habituellement de le faire via une option lors de la création de
     la base.

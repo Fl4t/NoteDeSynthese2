@@ -1,155 +1,178 @@
-\chapter{Création d'IITAMP} % (fold)
-\label{cha:Création d'IITAMP}
+\chapter{La gestion de version} % (fold)
+\label{cha:La gestion de version}
 
 \begin{it}
-  La majeur partie des entreprises utilisant l'informatique
-  dispose d'un réseau local. Le but de IITAMP\, \footnote{\emph{IdentIt
-  Apache MySQL PHP.}} est de fournir les outils capables de faire
-  fonctionner une application Web développé par \emph{IdentIt} sur un
-  poste informatique d'une entreprise de façon simple et efficace, ce
-  qui permet de ce passer d'un hébergeur sur internet et d'autres
-  avantages.
+Les logiciels de gestion de versions ou VCS\, \footnote{\emph{Version
+Control System.}} sont utilisés principalement par les développeurs. En
+effet, ils sont quasi exclusivement utilisés pour gérer des codes
+sources, car ils sont capables de suivre l’évolution d’un fichier texte
+\emph{ligne de code par ligne de code.} Ces logiciels sont fortement
+conseillés pour gérer un projet informatique.
 \end{it}
 
-\section{Les avantages d'un intranet} % (fold)%{{{
-\label{sec:Les avantages d'un intranet}
+\section{Git : Le gestionnaire de code source} % (fold)%{{{
+\label{sec:Git : Le gestionnaire de code source}
 
-\lettrine{C}{ertaines} entreprises dans un but de confidentialité
-préfèrent utiliser des applications en intranet. Dans mon cas, un
-serveur sous Windows Server 2008 utilise IITAMP ainsi
-qu'une application \emph{IdentIt} pour qu'a partir du réseau local tout
-les ordinateurs puissent utiliser l'application. De ce fait, le produit
-n'est pas accessible via l'Internet.
+\lettrine{L}{es} gestionnaires de versions retiennent qui a effectué
+chaque modification de chaque fichier et pourquoi. Ils sont par
+conséquent capables de dire qui a écrit chaque ligne de chaque fichier
+et dans quel but ; si deux personnes travaillent simultanément sur un
+même fichier, ils sont capables de fusionner leurs modifications et
+d’éviter que le travail d’une de ces personnes ne soit écrasé. La
+figure~\ref{flow} qui ce trouve en page \pageref{flow} illustre
+basiquement l'utilisation de Git.
 
-La confidentialité n'est pas le seul atout. En effet, passer par un
-réseau d'entreprise en terme de performance est avantageux car les
-requêtes entre le client et le serveur ce font \emph{intra muros} tandis
-que passer par un hébergeur qui peut ce trouver à des milliers de
-kilomètres affecte les délais. Utiliser une solution d'hébergement sur
-le réseau des réseaux à un coût alors qu'une solution locale n'est pas
-forfaitaire.
+Ces logiciels ont donc par conséquent deux utilités principales :
+\begin{itemize}
 
-Dans le cas d'un hébergement, si la connexion à internet vient à être
-interrompu, le service n'est plus disponible. Par contre avec notre
-solution ça continue à fonctionner.
-% section Les avantages d'un intranet (end)%}}}
+  \item suivre l’évolution d’un code source, pour retenir les
+    modifications effectuées sur chaque fichier et être ainsi capable de
+    revenir en arrière en cas de problème ;
 
-\section{La base applicative} % (fold)%{{{
-\label{sec:La base applicative}
+  \item travailler à plusieurs, sans risquer de se marcher sur les
+    pieds.  Si deux personnes modifient un même fichier en même temps,
+    leurs modifications doivent pouvoir être fusionnées sans perte
+    d’information.
 
-Je suis tout d'abord parti d'une base XAMPP générique. C'est un logiciel
-libre développé par une équipe de bénévoles. Cette ensemble de
-programmes permettent de mettre en \oe{}uvre un serveur web sur un PC
-Windows à des fins de développement. La suite XAMPP regroupe les
-logiciels Apache\, \footnote{Serveur HTTP}, MySQL\, \footnote{Serveur de
-base de données.} et PHP\, \footnote{\emph{PHP: Hypertext Preprocessor}
-acronyme récursif désignant un langage de script.}. De ce fait, il
-permet d'héberger sur la machine qui la compose un site internet
-dynamique. La solution de base ne nous satisfaisant pas, mon travail
-consista à modifier ce gratuiciel pour les besoins de déploiement des
-produits \emph{IdentIt}.
-% section La base applicative (end)%}}}
+\end{itemize}
 
-\section{Les objectifs} % (fold)%{{{
-\label{sec:Les objectifs}
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.7]{images/workflow.png}
+    \caption{ Chaque utilisateur possède une copie du code source
+    ainsi que toutes les versions précédentes de celui-ci, ce qui n'est pas
+    le cas de l'existant. Le serveur sert de point de rencontre entre les
+    développeurs et possède lui aussi l’historique des versions.}
+    \label{flow}
+  \end{center}
+\end{figure}
 
-\subsection{La maintenabilité} % (fold)%{{{
-\label{sub:La maintenabilité}
+\subsection{L'installation} % (fold)%{{{
+\label{sub:L'installation}
 
-Pour proposer une maintenance de bug efficace est facile il a fallut
-installer le module PHP \emph{Xdebug} qui permet d'afficher des erreurs
-plus significatives que celles de PHP par défaut. En effet, celui-ci
-permet la coloration syntaxique ainsi que les valeurs des variables qui
-précède le bug. J'ai aussi externalisé les fichiers d'historique dans un
-dossiers séparé ce qui permet d'y accéder facilement. Auquel cas on
-puisse demander au client de nous envoyer le dossier archivé par
-courrier électronique pour analyser si Xdebug ne suffisait pas pour
-d'écrire l'erreur rencontré par téléphone.
-% subsection La maintenabilité (end)%}}}
+À peu près au milieu du stage, nous nous sommes heurtés à un problème
+technique. Le serveur de l'entreprise ne contenait pas de version
+récente de Git. En sachant que celui-ci est de type mutualisé\,
+\footnote{C'est un concept d'hébergement dont la caractéristique
+principale est d'être partagé par plusieurs utilisateurs.}, nous
+n'avions pas les autorisations nécessaires pour installer une nouvelle
+version.
 
-\subsection{L'évolutivité} % (fold)%{{{
-\label{sub:L'évolutivité}
+Les logiciels libres sont réputés pour être rétro-compatibles, mais en
+toute logique ils ne disposent pas des nouveautés sans les mettre à jour.
+Le problème est qu'on ne pouvait pas créer des branches distantes dites
+\og de suivi \fg{}. Cette fonctionnalité permet à plusieurs développeurs
+de travailler en même temps sur une branche différente de celle par
+défaut, par exemple pour expérimenter de nouvelles implémentations à
+plusieurs.
 
-Comme les dossiers sont séparés méticuleusement, une mise à jour de
-l'applicatif web ou du serveur IITAMP ce fait à partir en quelques
-étapes très simple contrairement au logiciel de base qui aurait
-nécessité beaucoup de manipulation, la plus pars de ses interventions
-étant demander au client lorsque les applications seront misent en
-production.
-% subsection L'évolutivité (end)%}}}
+À ce moment-là j'ai été très déçu et pensais mon travail inutilisable.
+Cependant, mes efforts n'ont pas été vains puisque \bsc{M.~Dubourg} après
+quelques recherches, a trouvé sur internet un utilisateur ayant réussi à
+installer Git sur un serveur mutualisé.  Nous n'avions pas les droits
+d'accès aux dossiers des programmes mais rien ne nous empêchait de
+compiler Git à partir des sources pour nous permettre de créer en local
+le logiciel\, \footnote{Le problème ne se serait pas posé si j'avais lu
+le chapitre traitant de la compilation dans mon livre Linux, je n'ai
+découvert cette méthode qu'après le stage\dots}. Ceci étant fait, en
+redéfinissant la variable système qui stocke les chemins des
+applications, nous avons pu utiliser notre compilé dernier cri.
+% subsection L'installation (end)%}}}
+% section Git : Le gestionnaire de code source (end)%}}}
 
-\subsection{La pérennité des données} % (fold)
-\label{sub:La pérennité des données}
+\section{Le tutoriel utilisateur} % (fold)%{{{
+\label{sec:Le tutoriel utilisateur}
 
-La informations des bases de données ainsi que les informations du
-navigateur Web sont extraite du dossier IITAMP ce qui permet de faire
-une sauvegarde efficace de celles-ci. La sauvegarde ce fait à partir
-d'une tache journalière que j'ai décrite dans un document pour
-l'utilisateur.
-% subsection La pérennité des données (end)
+Pour aider les développeurs à intégrer le nouveau gestionnaire de
+version, j'ai élaboré un document Office Word de
+quatorze pages qui explique les bases du logiciel, la mise en place de
+l'outil dans leur environnement de travail respectif et l'utilisation de
+celui-ci avec le gratuiciel TortoiseGit.  Pour être au plus près des
+problématiques qui pourraient être rencontrées, j'ai conçu l'intégralité
+du guide sous forme de questions et de réponses.
 
-\subsection{L'éfficacité} % (fold)%{{{
-\label{sub:L'éfficacité}
+\begin{enumerate}
+  \item Les bases
+  \item Comment mettre en place Git sur Windows ?
+  \item Comment gérer les dépôts Git ?
+  \item Comment utiliser Git ?
+  \item Comment utiliser les branches ?
+  \item Comment consulter l'historique des modifications ?
+  \item Quelle est la méthode de travail ?
+\end{enumerate}
+% section Le tutoriel utilisateur (end)%}}}
 
-Pour optimiser le serveur IITAMP, une inspection profonde du logiciel
-fut nécessaire. En effet, celui-ci est composé de base d'une multitude de
-librairies et modules qui ne sont pas forcement utile au applications
-développé par \emph{IdentIt}. De ce fait, un nettoyage fut entrepris. Un
-gain de 20 mega-octets à été constaté.
-% subsection L'éfficacité (end)%}}}
+\section{Les utilitaires} % (fold)%{{{
+\label{sec:Les utilitaires}
 
-\subsection{La simplicité} % (fold)%{{{
-\label{sub:La simplicité}
+Nous avons longuement discuté sur le côté technique de Git. En effet cet
+outil est à la base un logiciel libre provenant de Linux et n'a pas
+d'interface graphique, ce choix est établi sur le fait qu'un développeur
+n'a pas forcément besoin de cela pour travailler\, \footnote{Sans nul
+doute que pour un graphiste, une souris est un élément indispensable
+pour ses créations, mais pas pour produire du code.} et aussi que ce
+logiciel regorge de fonctionnalités et donc très difficile à simplifier
+à travers une interface ne pouvant fonctionner qu'avec une souris.
+L'équipe n'étant pas très férue de ligne de commande et le logiciel
+TortoiseGit ne reprenant que les fonctions essentielles de Git, il a
+fallu que je conçois des petits programmes qui fonctionnent en un clic
+pour simplifier les choses répétitives.
 
-Pour rendre simple l'utilisation du serveur web pour le client, il à
-fallut créer des scripts d'automatisations pour certaines taches pas
-forcements évidentes pour les non initiés. Par exemple l'installation des
-applications entant que services ainsi que le démarrage des dit services.
-J'ai aussi développer une page d'index dans le cas ou le client à
-plusieurs applications web de l'entreprise \emph{IdentIt}, auquel cas une
-sélection de l'application est a faire.
-% subsection La simplicité (end)%}}}
+\subsection{Lister les dépôts du serveur} % (fold)%{{{
+\label{sub:Lister les dépôts du serveur}
 
-\subsection{La propriété} % (fold)%{{{
-\label{sub:La propriété}
+Mon travail suivant consista à lister les dépôts Git sur une page Web.
+Le serveur OVH centralise les codes sources de la société, les
+développeurs, eux doivent récupérer une copie des dossiers pour pouvoir
+travailler dessus. Seulement, lancer FilleZilla\, \footnote{FileZilla
+est un logiciel gratuit qui permet de se connecter à distance sur un
+serveur pour y télécharger des fichiers via le Protocole FTP.} pour
+connaître les noms des répertoires Git puis recopier le bon lien
+hypertexte avec le bon chemin d'arborescence est une tâche fastidieuse.
+J'ai donc, à l'aide de mes connaissances en système UNIX, créé un script
+qui analyse un dossier défini et qui liste les différents dépôts tout en
+leur mettant les bonnes adresses de téléchargement en préfixe comme nous
+le montre la figure~\ref{repo}. Du coup, un simple copier-coller du lien
+du dépôt voulu dans tortoiseGit suffit pour cloner, gain de productivité
+et de simplicité réunies.
 
-Pour la partie juridique dans un soucis de propriété intellectuelle,
-j'ai installé un module qui permet le chiffrement du code source PHP,
-cette extension s'appelle Bcompiler et m'a servi lors de l'installation
-des applications après la finalisation du serveur IITAMP.
-% subsection La propriété (end)%}}}
-% section Les objectifs (end)%}}}
+\begin{figure}
+    \begin{center}
+        \includegraphics[scale=0.7]{images/repo.png}
+        \caption{La liste des dépôts cliquables.}
+        \label{repo}
+    \end{center}
+\end{figure}
 
-\section{Les documentations} % (fold)%{{{
-\label{sec:Les documentations}
+\newpage
+% subsection Lister les dépôts du serveur (end)%}}}
 
-\begin{description}
+\subsection{Mise en production automatique} % (fold)%{{{
+\label{sub:Mise en production automatique}
 
-  \item[Création d'un IITAMP :] Permet de recréer un serveur IITAMP à
-    partir d'un serveur XAMPP qui incorpore des nouveautés ou des mises
-    à jours.
+Une fois que les développeurs sont satisfaits de leurs modifications,
+ils doivent mettre à jour le dépôt distant pour partager leurs travaux.
+Une fois les modifications validées par le chef de projet, celui-ci doit
+mettre en ligne sur le dépôt de production. J'ai créé un script Batch\,
+\footnote{Désigne un fichier qui contient une suite de commandes qui
+seront traitées automatiquement par Windows.} \og modèle \fg{} pour
+que cela se fasse en un clic.
+% section Mise en production automatique (end)%}}}
 
-  \item[Mise en \oe{}uvre d'un IITAMP :] mise en place de l'IITAMP
-    nouvellement installé en entreprise ou mise à jour de celui-ci.
+\subsection{Mise à jour locale automatique} % (fold)%{{{
+\label{sub:Mise à jour locale automatique}
 
-  \item[Préparation d'une application :] Illustre les étapes de
-    préparation d'une application Web d'\emph{IdentIt} pour quel soit
-    parfaitement intégré à IITAMP.
-
-  \item[Déploiement d'une application :] Comment mettre en place ou
-    mettre à jour une application web dans un IITAMP déjà en service.
-
-  \item[Maintenance de bases de données :] Explication de la mise en
-    place d'une sauvegarde automatique des bases de données des
-    applications ainsi que la restauration de ses sauvegardes.
-
-  \item[Démarche d'activation de GeMa :] Documentation pour
-    \emph{IdentIt} compréhensible par les non techniciens qui explique
-    comment activer une application chez un client.
-
-  \item[Mise en place de GeMa en entreprise :] Documentation pour les
-    clients qui décrit les premières étapes à suivre pour utiliser GeMa.
-
-\end{description}
-% section Les documentations (end)%}}}
-% chapter Création d'IITAMP (end)
+Les développeurs possèdent des clones des dépôts distants en local pour
+bien évidemment maintenir le code source. Le fait qu'il y ait une
+multitude de dépôts implique une mise à jour des clones locaux pour
+récupérer les modifications des autres développeurs ce qui est très
+répétitif. J'ai donc créé un script Batch qui explore tous les dossiers
+englobant les sources des dépôts et les met à jour. Pour cela j'ai
+parcouru la documentation de la console Windows et ça n'a pas été
+évident du tout. Pour l'anecdote, je devais à partir de mon MacBook
+Pro\, \footnote{Mac OS X est un système de type UNIX.} ; lancer une
+machine virtuelle Windows\, \footnote{À partir du logiciel VirtualBox.}
+; pour créer mon script qui s'exécute en console ; et qui lance enfin un
+terminal Linux pour faire la mise à jour\dots
+% subsection Mise à jour locale automatique (end)%}}} section Les
+% utilitaires (end)%}}} chapter La gestion de version (end)%}}}

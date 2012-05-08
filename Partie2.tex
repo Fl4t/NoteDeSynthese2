@@ -2,10 +2,12 @@
 \label{cha:La gestion de version}
 
 \begin{it}
+
 J'ai eu pour objectif de déployer un nouvel outil de gestion de version
 dans l'entreprise. Cette partie évoque les détails de cette mise en
 \oe{}uvre. Pour l'anecdote Git fut choisi comme remplacement à
-Subversion lorsque \bsc{M.~Dubourg} consulta mon curiculum-vitae.
+Subversion lorsque \mbox{\bsc{M.~Dubourg}} consulta mon curiculum-vitae.
+
 \end{it}
 
 \section{Git : Le gestionnaire de code source} % (fold)%{{{
@@ -55,33 +57,30 @@ Ces logiciels ont donc par conséquent deux utilités principales :
 \subsection{L'installation} % (fold)%{{{
 \label{sub:L'installation}
 
-À peu près au milieu du stage, nous nous sommes heurtés à un problème
-technique. Le serveur de l'entreprise ne contenait pas de version
-récente de Git. En sachant que celui-ci est de type mutualisé\,
-\footnote{C'est un concept d'hébergement dont la caractéristique
-principale est d'être partagé par plusieurs utilisateurs.}, nous
-n'avions pas les autorisations nécessaires pour installer une nouvelle
-version.
+À mis parcours, nous nous sommes heurtés à un problème technique. Le
+serveur de l'entreprise ne contenait pas de version récente de Git. En
+sachant que celui-ci est de type mutualisé\, \footnote{C'est un concept
+d'hébergement dont la caractéristique principale est d'être partagé par
+plusieurs utilisateurs.}, nous n'avions pas les autorisations
+nécessaires pour installer une nouvelle version.
 
 Les logiciels libres sont réputés pour être rétro-compatibles, mais en
-toute logique ils ne disposent pas des nouveautés sans les mettre à jour.
-Le problème est qu'on ne pouvait pas créer des branches distantes dites
-\og de suivi \fg{}. Cette fonctionnalité permet à plusieurs développeurs
-de travailler en même temps sur une branche différente de celle par
-défaut, par exemple pour expérimenter de nouvelles implémentations à
-plusieurs.
+toute logique ils ne disposent pas des nouveautés sans les mettre à
+jour.  Le problème est qu'on ne pouvait pas créer des branches distantes
+dites \og de suivi \fg{}. Cette fonctionnalité permet à plusieurs
+développeurs de travailler en même temps sur une branche différente de
+celle par défaut, par exemple pour expérimenter de nouvelles
+implémentations à plusieurs.
 
 À ce moment-là j'ai été très déçu et pensais mon travail inutilisable.
-Cependant, mes efforts n'ont pas été vains puisque \bsc{M.~Dubourg} après
-quelques recherches, a trouvé sur internet un utilisateur ayant réussi à
+Cependant, mes efforts n'ont pas été vains puisqu'après quelques
+recherches, j'ai trouvé sur internet un utilisateur ayant réussi à
 installer Git sur un serveur mutualisé.  Nous n'avions pas les droits
 d'accès aux dossiers des programmes mais rien ne nous empêchait de
 compiler Git à partir des sources pour nous permettre de créer en local
-le logiciel\, \footnote{Le problème ne se serait pas posé si j'avais lu
-le chapitre traitant de la compilation dans mon livre Linux, je n'ai
-découvert cette méthode qu'après le stage\dots}. Ceci étant fait, en
-redéfinissant la variable système qui stocke les chemins des
-applications, nous avons pu utiliser notre compilé dernier cri.
+le logiciel. Ceci étant fait, en redéfinissant la variable système qui
+stocke les chemins des applications, nous avons pu utiliser notre
+compilé dernier cri.
 % subsection L'installation (end)%}}}
 % section Git : Le gestionnaire de code source (end)%}}}
 
@@ -89,12 +88,12 @@ applications, nous avons pu utiliser notre compilé dernier cri.
 \label{sec:Le tutoriel utilisateur}
 
 Pour aider les développeurs à intégrer le nouveau gestionnaire de
-version, j'ai élaboré un document Office Word de
-quatorze pages qui explique les bases du logiciel, la mise en place de
-l'outil dans leur environnement de travail respectif et l'utilisation de
-celui-ci avec le gratuiciel TortoiseGit.  Pour être au plus près des
-problématiques qui pourraient être rencontrées, j'ai conçu l'intégralité
-du guide sous forme de questions et de réponses.
+version, j'ai élaboré un document Office Word de quatorze pages qui
+explique les bases du logiciel, la mise en place de l'outil dans leur
+environnement de travail respectif et l'utilisation de celui-ci avec le
+gratuiciel TortoiseGit.  Pour être au plus près des problématiques qui
+pourraient être rencontrées, j'ai conçu l'intégralité du guide sous
+forme de questions et de réponses.
 
 \begin{enumerate}
   \item Les bases
@@ -110,18 +109,18 @@ du guide sous forme de questions et de réponses.
 \section{Les utilitaires} % (fold)%{{{
 \label{sec:Les utilitaires}
 
-Nous avons longuement discuté sur le côté technique de Git. En effet cet
-outil est à la base un logiciel libre provenant de Linux et n'a pas
+Nous avons longuement discuté sur le côté technique de Git. En effet,
+cet outil est à la base un logiciel libre provenant de Linux et n'a pas
 d'interface graphique, ce choix est établi sur le fait qu'un développeur
-n'a pas forcément besoin de cela pour travailler\, \footnote{Sans nul
-doute que pour un graphiste, une souris est un élément indispensable
-pour ses créations, mais pas pour produire du code.} et aussi que ce
-logiciel regorge de fonctionnalités et donc très difficile à simplifier
-à travers une interface ne pouvant fonctionner qu'avec une souris.
-L'équipe n'étant pas très férue de ligne de commande et le logiciel
-TortoiseGit ne reprenant que les fonctions essentielles de Git, il a
-fallu que je conçois des petits programmes qui fonctionnent en un clic
-pour simplifier les choses répétitives.
+n'a pas forcément besoin de cela pour travailler\, \footnote{Nul doute
+que pour un graphiste, une souris est un élément indispensable pour ses
+créations, mais pas pour produire du code.} et aussi que ce logiciel
+regorge de fonctionnalités et donc très difficile à simplifier à travers
+une interface ne pouvant fonctionner qu'avec une souris.  L'équipe
+n'étant pas très férue de ligne de commande et le logiciel TortoiseGit
+ne reprenant que les fonctions essentielles de Git, il a fallu que je
+conçois de petits programmes qui fonctionnent en un clic pour simplifier
+les choses répétitives.
 
 \subsection{Lister les dépôts du serveur} % (fold)%{{{
 \label{sub:Lister les dépôts du serveur}
@@ -139,7 +138,7 @@ qui analyse un dossier défini et qui liste les différents dépôts tout en
 leur mettant les bonnes adresses de téléchargement en préfixe comme nous
 le montre la figure~\ref{repo} en page \pageref{repo}. Du coup, un
 simple copier-coller du lien du dépôt voulu dans tortoiseGit suffit pour
-cloner, gain de productivité et de simplicité réunies.
+cloner. Gain de productivité et de simplicité réunies.
 
 \begin{figure}
     \begin{center}
@@ -157,27 +156,27 @@ cloner, gain de productivité et de simplicité réunies.
 
 Une fois que les développeurs sont satisfaits de leurs modifications,
 ils doivent mettre à jour le dépôt distant pour partager leurs travaux.
-Une fois les modifications validées par le chef de projet, celui-ci doit
-mettre en ligne sur le dépôt de production. J'ai créé un script Batch\,
+Une fois les modifications validées par le chef de projet, celui-ci les
+mets en ligne sur le dépôt de production. J'ai créé un script Batch\,
 \footnote{Désigne un fichier qui contient une suite de commandes qui
-seront traitées automatiquement par Windows.} \og modèle \fg{} pour
-que cela se fasse en un clic.
+seront traitées automatiquement par Windows.} \og modèle \fg{} pour que
+cela se fasse en un clic.
 % section Mise en production automatique (end)%}}}
 
 \subsection{Mise à jour locale automatique} % (fold)%{{{
 \label{sub:Mise à jour locale automatique}
 
 Les développeurs possèdent des clones des dépôts distants en local pour
-bien évidemment maintenir le code source. Le fait qu'il y ait une
-multitude de dépôts implique une mise à jour des clones locaux pour
-récupérer les modifications des autres développeurs ce qui est très
-répétitif. J'ai donc créé un script Batch qui explore tous les dossiers
-englobant les sources des dépôts et les met à jour. Pour cela j'ai
-parcouru la documentation de la console Windows et ça n'a pas été
-évident du tout. Pour l'anecdote, je devais à partir de mon MacBook
-Pro\, \footnote{Mac OS X est un système de type UNIX.} ; lancer une
-machine virtuelle Windows\, \footnote{À partir du logiciel VirtualBox.}
-; pour créer mon script qui s'exécute en console ; et qui lance enfin un
-terminal Linux pour faire la mise à jour\dots
-% subsection Mise à jour locale automatique (end)%}}} section Les
-% utilitaires (end)%}}}
+maintenir le code source. Le fait qu'il y ait une multitude de dépôts
+implique une mise à jour des clones locaux pour récupérer les
+modifications des autres développeurs ce qui est très répétitif. J'ai
+donc créé un script Batch qui explore tous les dossiers englobant les
+sources des dépôts et les met à jour. Pour cela j'ai parcouru la
+documentation de la console Windows et ça n'a pas été évident.  Pour
+l'anecdote, je devais à partir de mon MacBook Pro\, \footnote{Mac OS X
+est un système de type UNIX.} lancer une machine virtuelle Windows\,
+\footnote{À partir du logiciel VirtualBox.} afin de créer un script qui
+s'exécute en console et qui lancerait un terminal Linux pour faire la
+mise à jour\dots
+% subsection Mise à jour locale automatique (end)%}}}
+% section Les utilitaires (end)%}}}

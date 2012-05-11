@@ -59,7 +59,7 @@ l'utilisation conventionnelle de l'application.
 \label{sec:Mise en place de la solution}
 
 Pour une interconnexion entre les sites, un dispositif de sécurité
-impressionnant à été mis en place par Syngenta. En effet, ceux-ci
+impressionnant a été mis en place par Syngenta. En effet, celle-ci
 utilise la technologie VPN,\footnote{\emph{Virtual Private Network} ou
 réseau privé virtuel.} qui permet d'obtenir une liaison sécurisée à
 moindre coût.
@@ -90,14 +90,14 @@ cent kilomètres...
 
 Dans le cadre de cette mise en \oe{}uvre, le client veut récupérer les
 données des interventions qui sont stockées dans la base MySQL de GeMa
-dans leur système d'information (SI) qui possède une base de donnée SQL
+dans leur système d'information (SI) qui possède une base de données SQL
 Server. Cette duplication de données permet une intégration des
 informations récoltés par GeMa dans le SI de l'entreprise à des fins de
 traçabilité, ce qui permet, à partir des autres logiciels du client, de
 faire des statistiques de production.
 
 Pour cette duplication, il a fallu que je développe un script PHP qui
-interroge la base de donnée de GeMa pour récupérer les données puis qui
+interroge la base de données de GeMa pour récupérer les données puis qui
 traite ces données pour les rendre compatibles à la structure de la base
 du client ainsi qu'à la technologie SQL Server utilisée et enfin qui
 insère ces données traitées dans la base du client.
@@ -106,8 +106,8 @@ insère ces données traitées dans la base du client.
 \label{sub:Les tests}
 
 Comme nous l'avons vu, GeMa utilise la mobilité pour le rapport des
-interventions. Pour tester si l'application GeMa et que le script de
-duplication de donnée fonctionnent correctement, quelques tests furent
+interventions. Pour tester si l'application GeMa et si le script de
+duplication de données fonctionnent correctement, quelques tests furent
 nécessaires. Sachant que le site de production n'est pas proche,
 l'utilisation d'un émulateur de PDA au travers du réseau VPN fut
 nécessaire.
@@ -116,14 +116,14 @@ Quelques problèmes sont apparus pendant la phase de debogage :
 \begin{description}
 
   \item[Communication entre les bases :] XAMPP par défaut ne permet pas
-    d'utiliser une base SQL Server, il a fallut que j'installe et
+    d'utiliser une base SQL Server, il a fallu que j'installe et
     configure le driver officiel de l'entreprise Microsoft pour
     permettre l'accès à la base de données.
 
   \item[Syntaxe invalide pour SQL Server :] Une habitude est ancrée dans
     l'utilisation du logiciel libre MySQL qui est de forcer l'encodage
     des caractères en UTF-8 afin d'éviter de futurs problèmes.  Cette
-    manipulation ce fait via une requête SQL, que l'on place dans le
+    manipulation se fait via une requête SQL, que l'on place dans le
     constructeur de la classe qui sert à instancier l'objet de connexion
     à la base de données. Comme les habitudes ont la vie dure, j'ai
     copié/collé un constructeur sans y prêter attention, cependant SQL
@@ -136,7 +136,7 @@ Quelques problèmes sont apparus pendant la phase de debogage :
     déplacer l'expéditeur en tant que spam après avoir reçu plusieurs
     fois le même e-mail.  Ne fermant pas l'émulateur la nuit pour éviter
     d'avoir à le relancer, une quantité impressionnante de courriel m'a
-    été annoncé quelques jours plus tard lorsque le cogérant à inspecté
+    été annoncé quelques jours plus tard lorsque le cogérant a inspecté
     son dossier à pourriel.
 
   \item[Obligation de renseigner tous les champs :] L'ancien système de
@@ -145,7 +145,7 @@ Quelques problèmes sont apparus pendant la phase de debogage :
     aucune valeur, un zéro lui était attribué. En inspectant les données
     de la base SQL Server, je me suis rendu compte que mon script quant
     à lui n'insérait rien lorsqu'il n'y avait pas de valeur. J'en ai
-    déduit qu'aucune règle de gestion n'avait été crée afin d'empêcher
+    déduit qu'aucune règle de gestion n'avait été créée afin d'empêcher
     la non-saisie. J'ai donc été obligé d'inscrire cette règle via le
     code\,\footnote{c'est la base du client, je n'ai pas à intervenir
     dessus même si elle me parait mal conçu.} alors que la bonne méthode

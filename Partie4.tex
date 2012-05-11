@@ -4,11 +4,11 @@
 \begin{it}
 
 Après la création d'IITAMP, ainsi que l'élaboration de toute sa
-documentation, je l'ai installé sur un serveur local chez un client pour
-héberger la solution GeMa qui est développée par \emph{IdentIt}. J'ai eu
-aussi l'opportunité de réaliser une vidéo d'utilisation de GeMa dans le
-cadre d'une présentation par les responsables de l'entreprise cliente à
-leurs salariés.
+documentation, je l'ai installée sur un serveur local chez un client
+pour héberger la solution GeMa qui est développée par \emph{IdentIt}.
+J'ai eu aussi l'opportunité de réaliser une vidéo d'utilisation de GeMa
+dans le cadre d'une présentation par les responsables de l'entreprise
+cliente à leurs salariés.
 
 \end{it}
 
@@ -72,10 +72,10 @@ d'autre que le destinataire). La figure~\ref{vpn} illustre le principe
 de ce type de connexion.
 
 La mise en \oe{}uvre d'IITAMP ainsi que de GeMa s'effectuant dans
-l'usine de Nerac près de bordeaux, le client nous a prêté un ordinateur
+l'usine de Nerac près de Bordeaux, le client nous a prêté un ordinateur
 portable avec tous les outils nécessaires à la connexion à distance afin
-d'éviter de me déplacer sur le site, ce qui représente à peu près six
-cent kilomètres...
+d'éviter de me déplacer sur le site, qui était situé à plus de six cent
+kilomètres...
 
 \begin{figure}
   \begin{center}
@@ -92,7 +92,7 @@ Dans le cadre de cette mise en \oe{}uvre, le client veut récupérer les
 données des interventions qui sont stockées dans la base MySQL de GeMa
 dans leur système d'information (SI) qui possède une base de données SQL
 Server. Cette duplication de données permet une intégration des
-informations récoltés par GeMa dans le SI de l'entreprise à des fins de
+informations récoltées par GeMa dans le SI de l'entreprise à des fins de
 traçabilité, ce qui permet, à partir des autres logiciels du client, de
 faire des statistiques de production.
 
@@ -123,34 +123,32 @@ Quelques problèmes sont apparus pendant la phase de debogage :
   \item[Syntaxe invalide pour SQL Server :] Une habitude est ancrée dans
     l'utilisation du logiciel libre MySQL qui est de forcer l'encodage
     des caractères en UTF-8 afin d'éviter de futurs problèmes.  Cette
-    manipulation se fait via une requête SQL, que l'on place dans le
+    manipulation se fait via une requête SQL que l'on éxecute dans le
     constructeur de la classe qui sert à instancier l'objet de connexion
     à la base de données. Comme les habitudes ont la vie dure, j'ai
-    copié/collé un constructeur sans y prêter attention, cependant SQL
-    Server ne connait pas cette syntaxe SQL. GeMa étant pourvu d'un
-    système d'alerte par mail, M.~Dubourg recevait des courriels à 5
-    minutes d'intervalles lorsque l'émulateur d'assistant personnel
-    lançait la synchronisation distante avec le serveur\,
-    \footnote{fonction de synchronisation automatique de GeMa Mobile
-    lorsque il est sur son socle.}, son client mail a bien entendu
-    déplacer l'expéditeur en tant que spam après avoir reçu plusieurs
-    fois le même e-mail.  Ne fermant pas l'émulateur la nuit pour éviter
-    d'avoir à le relancer, une quantité impressionnante de courriel m'a
-    été annoncé quelques jours plus tard lorsque le cogérant a inspecté
-    son dossier à pourriel.
+    copié/collé le constructeur sans y prêter attention, cependant SQL
+    Server ne connait pas cette syntaxe. GeMa étant pourvu d'un système
+    d'alerte par mail, M.~Dubourg recevait des courriels à 5 minutes
+    d'intervalles lorsque l'émulateur d'assistant personnel lançait la
+    synchronisation distante avec le serveur\, \footnote{Fonction de
+    synchronisation automatique de GeMa Mobile lorsqu'il est sur son
+    socle.}, son client mail a bien entendu déplacé l'expéditeur en tant
+    que spam après avoir reçu plusieurs fois le même e-mail.  Ne fermant
+    pas l'émulateur la nuit pour éviter d'avoir à le relancer, une
+    quantité impressionnante de courriel m'a été annoncé quelques jours
+    plus tard lorsque le cogérant a inspecté son dossier à pourriel.
 
   \item[Obligation de renseigner tous les champs :] L'ancien système de
     relevé se faisant à l'aide d'un papier/crayon puis par l'ajout de
     ces annotations dans un fichier Excel, lorsqu'un champ n'avait
     aucune valeur, un zéro lui était attribué. En inspectant les données
-    de la base SQL Server, je me suis rendu compte que mon script quant
-    à lui n'insérait rien lorsqu'il n'y avait pas de valeur. J'en ai
-    déduit qu'aucune règle de gestion n'avait été créée afin d'empêcher
-    la non-saisie. J'ai donc été obligé d'inscrire cette règle via le
-    code\,\footnote{c'est la base du client, je n'ai pas à intervenir
-    dessus même si elle me parait mal conçu.} alors que la bonne méthode
-    est habituellement de le faire via une option lors de la création de
-    la base.
+    de la base SQL Server, je me suis rendu compte que mon script, lui
+    n'insérait rien lorsqu'il n'y avait pas de valeur. J'en ai déduit
+    qu'aucune règle de gestion n'avait été créée afin d'empêcher la
+    non-saisie. J'ai donc été obligé d'inscrire cette règle via le
+    code\,\footnote{C'est la base du client, je n'ai pas à intervenir
+    dessus même si elle me paraît mal conçue.} alors que habituellement,
+    il faut le faire via une option lors de la création de la base.
 
 \end{description}
 % subsection Les tests (end)%}}}
